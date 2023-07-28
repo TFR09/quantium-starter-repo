@@ -1,15 +1,18 @@
-import csv
+import csv, os
 
-    
+
+DATA_DIRECTORY = "./data"
+OUTPUT_FILE = "pink_morsels_sales_data.csv"
+
+   
 def main():
-    for num in range(3):
-        with open(f"data/daily_sales_data_{num}.csv") as f:
-            reader = csv.DictReader(f)
-            with open("pink_morsels_sales_data.csv", "a", newline='') as df:
-                headers = ["sales", "date", "region"]
-                writer = csv.DictWriter(df, fieldnames=headers)
-                if num == 0:
-                    writer.writeheader() 
+    with open(OUTPUT_FILE, "w", newline='') as output_f:
+        headers = ["sales", "date", "region"]
+        writer = csv.DictWriter(output_f, fieldnames=headers)
+        writer.writeheader() 
+        for data_file in os.listdir(DATA_DIRECTORY):
+            with open(f"{DATA_DIRECTORY}/{data_file}") as df:
+                reader = csv.DictReader(df)
                 for row in reader:
                     if row['product'] == "pink morsel":
                         data = get_data(row)
@@ -28,6 +31,7 @@ def get_data(row):
     
 def convert_to_float(price):
     return float(price.strip("$"))
+
 
 if __name__ == "__main__":
     main()
