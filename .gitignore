@@ -108,6 +108,9 @@ celerybeat.pid
 .spyderproject
 .spyproject
 
+#virtual environment
+.venv/
+
 # Rope project settings
 .ropeproject
 

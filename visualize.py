@@ -5,10 +5,10 @@ import pandas as pd
 
 df = pd.read_csv("pink_morsels_sales_data.csv")
 
+app = Dash(__name__)
+
 
 def main():
-    app = Dash(__name__)
-
     app.layout = html.Div(children=[
         html.H1(children="Sales Visualization", style = {
             "text-align": "center", 
