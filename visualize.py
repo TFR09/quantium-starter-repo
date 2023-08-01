@@ -7,55 +7,51 @@ df = pd.read_csv("pink_morsels_sales_data.csv")
 
 app = Dash(__name__)
 
-
-def main():
-    app.layout = html.Div(children=[
-        html.H1(children="Sales Visualization", style = {
-            "text-align": "center", 
-            "color": "#F1B6AC"
-            }),
-        html.H2(children="Pink Morsels Sales",
-            style={
-            'textAlign': 'center',
-            "color": "#FFDDD6"
-            }),
-        html.Div(children = [
-        dcc.RadioItems(
-            id = "region",
-            options = [
-            {'label': 'North', 'value': 'north'},
-            {'label': 'South', 'value': 'south'},
-            {'label': 'East', 'value': 'east'},
-            {'label': 'West', 'value': 'west'},
-            {'label': 'All', 'value': 'all'},
-            ],
-            value = 'all',
-            labelStyle = {
-                "padding": "15px",
-                "display": "inline-block"
-                }
-            ),
-        dcc.Graph(
-            id = "pink_morsel_sale_graph",
-            style = {
-                "margin": "auto",
-                "width": "95%",
-                "height": "90%",
+app.layout = html.Div(children=[
+    html.H1(children="Sales Visualization", style = {
+        "text-align": "center", 
+        "color": "#F1B6AC"
+        }),
+    html.H2(children="Pink Morsels Sales",
+        style={
+        'textAlign': 'center',
+        "color": "#FFDDD6"
+        }),
+    html.Div(children = [
+    dcc.RadioItems(
+        id = "region",
+        options = [
+        {'label': 'North', 'value': 'north'},
+        {'label': 'South', 'value': 'south'},
+        {'label': 'East', 'value': 'east'},
+        {'label': 'West', 'value': 'west'},
+        {'label': 'All', 'value': 'all'},
+        ],
+        value = 'all',
+        labelStyle = {
+            "padding": "15px",
+            "display": "inline-block"
             }
-        )],
+        ),
+    dcc.Graph(
+        id = "pink_morsel_sale_graph",
         style = {
-        "margin": "auto",
-        "padding": "30px 10px",
-        "textAlign": "center"
-        })],
-        style = {
-            "width": "100%",
-            "height": "100%",
-            "backgroundColor": "#869F77"
+            "margin": "auto",
+            "width": "95%",
+            "height": "90%",
         }
-    )
-
-    app.run(debug=True)
+    )],
+    style = {
+    "margin": "auto",
+    "padding": "30px 10px",
+    "textAlign": "center"
+    })],
+    style = {
+        "width": "100%",
+        "height": "100%",
+        "backgroundColor": "#869F77"
+    }
+)
 
 
 @callback(
@@ -74,4 +70,4 @@ def update_figure(region):
 
 
 if __name__ == "__main__":
-    main()
+    app.run(debug=True)

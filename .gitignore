@@ -53,6 +53,7 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
+.__pycache__
 
 # Translations
 *.mo
@@ -109,7 +110,10 @@ celerybeat.pid
 .spyproject
 
 #virtual environment
-.venv/
+venv/
+
+#chromedriver
+chromedriver.exe
 
 # Rope project settings
 .ropeproject
